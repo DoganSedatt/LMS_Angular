@@ -9,6 +9,8 @@ import { Category } from '../../../models/Category';
 import { Publisher } from '../../../models/publisher';
 import { PublisherService } from '../../../shared/services/publisher.service';
 import { Book } from '../../../models/book';
+import { AuthorService } from '../../../shared/services/author.service';
+import { Author } from '../../../models/Author';
 @Component({
   selector: 'app-add-book',
   standalone: true,
@@ -20,14 +22,16 @@ export class AddBookComponent implements OnInit{
   bookAddForm !: FormGroup ;
   categories:Category[]=[];
   publishers:Publisher[]=[];
+  authors:Author[]=[];
   constructor(private formBuilder:FormBuilder,
-    private bookService:BookService,private categoryService:CategoryService,private publisherService:PublisherService){}
+    private bookService:BookService,private categoryService:CategoryService,private publisherService:PublisherService,private authorService:AuthorService){}
   
   
   ngOnInit(): void {
     this.createBookAddForm();
     this.getAllCategories();
     this.getAllPublishers();
+    this.getAllAuthors();
   }
   getAllCategories() {
     this.categoryService.getAll().subscribe(
@@ -43,6 +47,12 @@ export class AddBookComponent implements OnInit{
         console.log(this.publishers);
       })
     }
+    getAllAuthors(){
+      this.authorService.getAllAuthors().subscribe((response:ResponseModel<Author>)=>{
+        this.authors=response.items;
+        console.log(this.authors);
+      })
+    }
     onCategoryChange(event: any) {
       const selectedCategory = event.target.value;
       const category = this.categories.find(item=>item.id==selectedCategory);
@@ -53,14 +63,19 @@ export class AddBookComponent implements OnInit{
       const publisher = this.publishers.find(item=>item.id==selectedPublisher);
       console.log(publisher);
     }
-    
+    onAuthorChange(event: any) {
+      const selectedAuthor = event.target.value;
+      const author = this.authors.find(item=>item.id==selectedAuthor);
+      console.log(author);
+    }
   createBookAddForm(){
     this.bookAddForm = this.formBuilder.group({
-      name:["",[Validators.required, Validators.minLength(2)]],
+      name:["",Validators.required],
       isbn:["",Validators.required],
       page:["",Validators.required],
-      publisherId:["",Validators.required],
       categoryId:["",Validators.required],
+      publisherId:["",Validators.required],
+      authorId:["",Validators.required],
       language:["",Validators.required],
       description:["",Validators.required],
       unitsInStock:["",[Validators.required,Validators.min(0)]],

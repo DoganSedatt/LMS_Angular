@@ -5,6 +5,7 @@ export class Book {
     page:number;
     categoryId:number;
     publisherId:number;
+    authorId:number;
     language:string;
     description:string;
     unitsInStock:number;
@@ -16,6 +17,7 @@ export class Book {
         this.page=data.page;
         this.categoryId=data.categoryId;
         this.publisherId=data.publisherId;
+        this.authorId=data.authorId;
         this.language=data.language;
         this.description=data.description;
         this.unitsInStock=data.unitsInStock;

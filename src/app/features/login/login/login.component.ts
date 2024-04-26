@@ -26,7 +26,7 @@ export class LoginComponent {
  loginForm = this.formBuilder.group({
   email:['',Validators.required],
   password:['',Validators.required],
-  authenticatorCode:['',Validators.required]
+  authenticatorCode:['string']
  });
 
 
@@ -36,9 +36,10 @@ export class LoginComponent {
    const authenticatorCode = this.loginForm.value.authenticatorCode!;
  
    this.loginService.Login(email, password, authenticatorCode).subscribe((result: LoginResponse) => {
+     result.email=email;//Girişi yapan maili result nesnesi içindeki maile at
      console.log(result);
      localStorage.setItem('Token', result.accessToken.token);
- 
+    alert(result.email+" kullanıcısı giriş yaptı")
      this.router.navigateByUrl('/homepage');
    });
  }

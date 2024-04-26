@@ -27,12 +27,12 @@ export class BookService {
     return this.httpClient.get<Response<Book>>('http://localhost:60805/api/Books/'+id)
   }
   
-  add(book:Book):Observable<any>{
+  add(book:Book):Observable<Book>{
     const token = localStorage.getItem('Token'); 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.httpClient.post<any>(this.apiUrl,book,{headers:headers})
+    return this.httpClient.post<Book>(this.apiUrl,book,{headers:headers})
   }
 
   editBook(book:Book):Observable<any>{

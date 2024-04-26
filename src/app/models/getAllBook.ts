@@ -7,6 +7,7 @@ export interface GetAllBook {
     categoryId:number,
     publisherName:any;
     publisherId:number,
+    authorId:number;
     language:string;
     description:string;
     unitsInStock:number;
