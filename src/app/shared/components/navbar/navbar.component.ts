@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TokenService } from '../../../core/services/token.service';
+import { AuthService } from '../../services/Auth.service';
+import { Member } from '../../../models/member';
 
 
 @Component({
@@ -13,10 +15,12 @@ import { TokenService } from '../../../core/services/token.service';
 
 })
 export class NavbarComponent {
-constructor(private tokenService:TokenService,private router:Router){}
-
+constructor(private tokenService:TokenService,private router:Router,public authService:AuthService){}
+loggedInMember: Member | null = null;
 isLoggedIn():boolean{
+  this.loggedInMember=this.authService.loggedInMember;
   return this.tokenService.hasToken();//Token varsa true yoksa false dönecek.
+  
 }
 logOut():void{
   this.tokenService.removeToken();

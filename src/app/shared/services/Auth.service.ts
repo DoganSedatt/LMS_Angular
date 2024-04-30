@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Member } from '../../models/member';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private isLoggedIn = false;
+  loggedInMember: Member | null = null;
   constructor() { }
 
   login() {

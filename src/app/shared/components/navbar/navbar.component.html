@@ -7,7 +7,16 @@
     </div>
 
     <ul class="list-nav-bar ">
-      
+        <div *ngIf="isLoggedIn(); else notLoggedIn">
+            <h3></h3>
+            <p>{{ authService.loggedInMember?.email }}</p>
+            <!-- Diğer bilgileri de buraya ekleyebilirsiniz -->
+          </div>
+          
+          <ng-template #notLoggedIn>
+            <p>Giriş yapılmamış.</p>
+            <!-- Giriş yapma bağlantısı veya başka bir içerik ekleyebilirsiniz -->
+          </ng-template>
         <li class="list-item"><a routerLink="/homepage">Ana Sayfa</a></li>
         <li class="list-item"><a routerLink="/getBooks">Kitaplar</a></li>
         <li class="list-item"><a routerLink="/addBook">Kitap Ekle</a></li>
