@@ -8,3 +8,4 @@ export interface AccessToken {
     requiredAuthenticatorType: null | string; 
     email:string;
   }
+  

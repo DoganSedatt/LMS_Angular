@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { BookListComponent } from './shared/pages/book-list/book-list.component';
+import { BookListComponent } from './shared/pages/admin/book/book-list/book-list.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ToastrModule } from 'ngx-toastr';
-import { CategoryComponent } from './shared/components/category/category/category.component';
+import { CategoryComponent } from './shared/pages/admin/category/category/category.component';
+
 
 
 
@@ -15,5 +16,6 @@ import { CategoryComponent } from './shared/components/category/category/categor
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-
+  
+  
 }

@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { CategoryListComponent } from "../../../components/category-list/category-list.component";
-import { BookListComponent } from '../book-list/book-list.component';
+import { CategoryListComponent } from "../admin/category/category-list/category-list.component";
+import { BookListComponent } from '../admin/book/book-list/book-list.component';
 
 
 

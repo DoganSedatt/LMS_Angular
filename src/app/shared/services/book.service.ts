@@ -11,8 +11,7 @@ import { GetAllBook } from '../../models/getAllBook';
   providedIn: 'root'
 })
 export class BookService {
-  private selectedBookSubject = new BehaviorSubject<any>(null);
-  selectedBook$ = this.selectedBookSubject.asObservable();
+  
 
   constructor(private httpClient:HttpClient) { }
   apiUrl:string = "http://localhost:60805/api/Books";

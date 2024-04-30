@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit{
         
         console.log(response);  
         console.log("Başarıyla eklendi.");
+        alert(response.firstName+" "+response.lastName+" adlı kullanıcı başarıyla eklendi");
        });
     }
 
