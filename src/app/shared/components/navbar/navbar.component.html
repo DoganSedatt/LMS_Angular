@@ -8,8 +8,8 @@
 
     <ul class="list-nav-bar ">
         <div *ngIf="isLoggedIn(); else notLoggedIn">
-            <h3></h3>
-            <p>{{ authService.loggedInMember?.email }}</p>
+            
+            <a routerLink="/homepage/{{authService.loggedInMember?.id}}/profile">Mevcut Oturum:{{ authService.loggedInMember?.email }}</a>
             <!-- Diğer bilgileri de buraya ekleyebilirsiniz -->
           </div>
           

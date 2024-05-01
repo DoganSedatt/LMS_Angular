@@ -13,6 +13,7 @@ import { AdminComponent } from './shared/pages/admin/admin.component';
 import { AddPublisherComponent } from './shared/pages/admin/publisher/add-publisher/addpublisher.component';
 import { publisherUpdateComponent } from './shared/pages/admin/publisher/publisher-update/publisherupdate.component';
 import { MemberListComponent } from './shared/pages/admin/member/member-list/member-list.component';
+import { ProfileComponent } from './shared/pages/admin/member/profile/profile.component';
 
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'members',component:MemberListComponent},
+  {path:'homepage/:id/profile',component:ProfileComponent},
   {path:'admin',component:AdminComponent,canActivate:[authGuard],data:{requiredRoles:['Admin']},
   children:
   [

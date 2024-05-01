@@ -23,6 +23,7 @@ isLoggedIn():boolean{
   
 }
 logOut():void{
+  this.authService.loggedInMember=null;
   this.tokenService.removeToken();
   this.router.navigateByUrl('/login');
 }
