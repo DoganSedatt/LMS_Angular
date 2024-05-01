@@ -34,8 +34,36 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMembers();
+    this.showPassword();
+    this.applyWaves();
   }
-  
+  showPassword() {
+    const checkbox = document.querySelector("show > input[type=checkbox]") as HTMLInputElement;
+    
+  const pswd = document.querySelector("input[type=password]");
+
+  // Elemanlar null değilse işlemleri gerçekleştir
+  if (checkbox && pswd) {
+    checkbox.addEventListener("input", (e) => {
+      // pswd ve checkbox null değilse ve pswd bir HTMLInputElement ise işlemleri gerçekleştir
+      if (pswd instanceof HTMLInputElement) {
+        pswd.type = checkbox.checked ? "text" : "password";
+      } else {
+        console.error("Password input element not found or incorrect type!");
+      }
+    });
+  } else {
+    console.error("Checkbox or password input element not found!");
+  }
+  }
+  applyWaves() {
+    const waves = document.querySelectorAll(".wave");
+    waves.forEach((wave: any) => {
+      for (let i = 0; i < wave.children.length; i++)
+        wave.children[i].style.transitionDelay = `${i * 0.1}s`;
+    });
+  }
+
   userMailFound: boolean = false;
   userMail: string = '';
   emailList: string[] = [];
